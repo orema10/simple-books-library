@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import bookService from '../service/book.service'
+import bookService from '../service/book.service';
 export default {
     props: ['book'],
     data() {
@@ -40,12 +40,13 @@ export default {
         }
     },
     created() {
-        this.bookToEdit = JSON.parse(JSON.stringify(this.book));
+        this.bookToEdit = Object.assign({}, this.book);
     },
     methods: {
         closeModal() {
             let elBook = document.getElementById(`${this.book.id}`);
             elBook.style.display = 'none';
+            this.bookToEdit = Object.assign({}, this.book);
         },
         editBook(book) {
             let books = this.$store.getters.books;
@@ -58,7 +59,7 @@ export default {
                 books.splice(idx, 1, book);
                 this.$store.commit({type: 'setBooks', books});
                 this.closeModal();
-                this.bookToEdit = JSON.parse(JSON.stringify(books[idx]));
+                this.bookToEdit = Object.assign({}, books[idx]);
             }
         }
     },
