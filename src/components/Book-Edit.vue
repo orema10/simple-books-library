@@ -51,6 +51,10 @@ export default {
             let books = this.$store.getters.books;
             const idx = books.findIndex(currBook => currBook.id === book.id);
             if(idx !== -1) {
+                let nonEnglish = book.title.replace(/[^a-zA-Z0-9]/g,' ');
+                book.title = nonEnglish.replace(/\w\S*/g, (txt) => {
+                        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+                    }).replace(/\s+/g, ' ')
                 books.splice(idx, 1, book);
                 this.$store.commit({type: 'setBooks', books});
                 this.closeModal();
@@ -59,13 +63,13 @@ export default {
         }
     },
     filters: {
-    textFilter(value) {
-        let nonEnglish = value.replace(/[^a-zA-Z0-9]/g,' ');
-        return nonEnglish.replace(/\w\S*/g, (txt) => {
-          return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-      }).replace(/\s+/g, ' ')
+        textFilter(title) {
+            let nonEnglish = title.replace(/[^a-zA-Z0-9]/g,' ');
+            return nonEnglish.replace(/\w\S*/g, (txt) => {
+            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+            }).replace(/\s+/g, ' ')
+        }
     }
-  }
 
 }
 </script>

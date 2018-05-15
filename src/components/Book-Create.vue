@@ -50,6 +50,12 @@ export default {
             let books = this.$store.getters.books;
             const bookIndex = books.findIndex(currBook => currBook.title === book.title);
             if(bookIndex === -1) {
+
+                let nonEnglish = book.title.replace(/[^a-zA-Z0-9]/g,' ');
+                book.title = nonEnglish.replace(/\w\S*/g, (txt) => {
+                        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+                    }).replace(/\s+/g, ' ');
+
                 books.push(book);
                 this.$store.commit({type: 'setBooks', books});
                 this.closeModal();
