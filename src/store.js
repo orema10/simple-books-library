@@ -16,21 +16,14 @@ export default new Vuex.Store({
   mutations: {
     setBooks(state, {books}) {
       state.books = books;
-    },
-    editBooks(state, {books}) {
-      state.books = books;
     }
   },
   actions: {
     getBooks(store) {
       bookService.query()
       .then(books => {
-        
         store.commit({type: 'setBooks', books})
       })
-    },
-    updateBooks(store, {books}) {
-      store.commit({type: 'editBooks', books})
     }
   }
 });

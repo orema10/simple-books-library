@@ -32,8 +32,10 @@ export default {
       if (isSure) {
         let books = this.$store.getters.books;
         const idx = books.findIndex(currBook => currBook.id === book.id);
-        books.splice(idx, 1);
-        this.$store.dispatch({ type: 'updateBooks', books });
+        if(idx !== -1) {
+          books.splice(idx, 1);
+          this.$store.commit({ type: 'setBooks', books });
+        }
       }
     }
   },

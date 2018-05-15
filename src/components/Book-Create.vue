@@ -51,7 +51,7 @@ export default {
             const bookIndex = books.findIndex(currBook => currBook.title === book.title);
             if(bookIndex === -1) {
                 books.push(book);
-                this.$store.dispatch({type: 'updateBooks', books})
+                this.$store.commit({type: 'setBooks', books});
                 this.closeModal();
                 this.book = bookService.getEmptyBook();
             } else {

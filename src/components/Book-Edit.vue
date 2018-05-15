@@ -50,10 +50,12 @@ export default {
         editBook(book) {
             let books = this.$store.getters.books;
             const idx = books.findIndex(currBook => currBook.id === book.id);
-            books.splice(idx, 1, book);
-            this.$store.dispatch({type: 'updateBooks', books});
-            this.closeModal();
-            this.bookToEdit = JSON.parse(JSON.stringify(books[idx]));
+            if(idx !== -1) {
+                books.splice(idx, 1, book);
+                this.$store.commit({type: 'setBooks', books});
+                this.closeModal();
+                this.bookToEdit = JSON.parse(JSON.stringify(books[idx]));
+            }
         }
     },
     filters: {
