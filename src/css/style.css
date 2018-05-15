@@ -1,0 +1,23 @@
+@import 'fonts/fonts.css';
+@import 'modal.css';
+@import 'books-list.css';
+@import 'book-preview.css';
+@import 'book-edit.css';
+@import 'book-create.css';
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    border: 0;
+}
+
+.books-app {
+    width: 1020px;
+    margin: 0 auto;
+}
+
+.books-app .app-title {
+    text-align: center;
+    font-family: "Dosis";
+    font-size: 3em;
+}

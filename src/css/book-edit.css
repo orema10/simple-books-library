@@ -1,0 +1,67 @@
+.edit-area {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0;
+}
+
+.book-edit-area {
+    height: 300px;
+}
+
+.edit-area .display {
+    width: 327px;
+    height: 400px;
+    text-align: left;
+}
+
+.book-edit-area .edit-area {
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 17px 0;
+}
+
+.book-edit-area .edit-area span {
+    font-weight: bold;
+}
+
+.book-edit-area .edit-area input {
+    margin-top: 5px;
+    margin-left: 20px;
+    width: 300px;
+    padding: 10px 5px;
+    font-size: 17px;
+    background-color: lightgray;
+    border-radius: 22px;
+
+}
+
+.book-edit-area input:focus {
+    outline: none;
+}
+
+.save-btn {
+    background-color: green;
+    padding: 5px;
+    color: white;
+    font-size: 20px;
+    width: 100px;
+    border: none;
+    border-radius: 12px;
+    transition: width 0.4s;
+    cursor: pointer;
+}
+
+.save-btn:hover {
+    width: 130px;
+}
+
+.save-btn:focus {
+    outline: none;
+}
+
+.btn-display {
+    opacity: 0.3;
+}

@@ -1,29 +1,32 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+        <section class="books-app" v-if="books">
+            <h1 class="app-title">Books Library</h1>
+            <books-list :books="books"></books-list>
+        </section>
+
+        <section v-else>
+            <h1>Can't load this page!</h1>
+        </section>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
+<script>
+import booksList from './components/Books-List';
+export default {
+  computed: {
+    books() {
+      return this.$store.getters.books;
     }
+  },
+  created() {
+    this.$store.dispatch({ type: "getBooks" });
+  },
+  components: {
+    booksList
   }
-}
+};
+</script>
+
+
+<style>
+  @import url('./css/style.css');
 </style>

@@ -1,0 +1,12 @@
+.create-area {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0;
+}
+
+.create-area .display {
+    width: 327px;
+    height: 400px;
+    text-align: left;
+}
